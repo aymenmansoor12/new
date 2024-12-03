@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeInDark</title>
+    <style>
+
+        body {
+            margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(./1st\ bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* Ensures the image is centered */
+    background-attachment: fixed; /* Ensures the image stays fixed during scroll */
+    color: rgb(3, 18, 61);
+    height: 100vh; /* Ensures the body takes up full height */
+    overflow-x: hidden; 
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: rgb(4, 5, 19);
+        }
+
+        .logo img {
+            height: 80px;
+            width: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+            color: rgb(161, 81, 235);
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #683096; /* Light purple hover effect */
+        }
+
+        .contact-btn {
+            padding: 10px 20px;
+            border: none;
+            background: linear-gradient(90deg, purple, white);
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(90deg, white, rgb(110, 33, 110));
+        }
+
+        .main {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .typewriter span {
+            font-size: 3rem;
+            display: inline-block;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            color: #683096;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            gap: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider .slide {
+            flex: 0 0 20%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider .slide.active {
+            transform: scale(1.5);
+            z-index: 2;
+            border-color: purple;
+        }
+
+        .slider .slide .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .slider .slide.active .description {
+            display: block;
+        }
+
+        .partners {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .partners h2 {
+            background: linear-gradient(90deg, white, purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        marquee {
+            display: block;
+            color: white;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        .dark-word-section {
+            background-color: #111; /* Darker background color */
+            text-align: center;
+            padding: 30px 0; /* Reduced padding to remove excessive gap */
+        }
+
+        .dark-word {
+            font-size: 10em; /* Extra Large font size */
+            font-weight: bold;
+            color: #6a1b9a; /* Darker purple color */
+            text-transform: uppercase;
+            letter-spacing: 80px; /* Increased spacing between letters */
+            text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6); /* 2D shadow effect */
+        }
+
+        footer {
+            background-color: #111; /* Same dark background as the "DARK" section */
+            color: #fff;
+            padding: 10px 40px; /* Reduced padding */
+            margin-bottom: 0; /* Remove any extra margin */
+            border-top: 3px solid #fff; /* White line above the footer */
+        } .main {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .typewriter span {
+            font-size: 3rem;
+            display: inline-block;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            color: #683096;
+            overflow: hidden;
+        }
+
+        .steps-to-follow {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .steps-to-follow h1 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .steps-to-follow h1 span {
+            color: #6a1b9a; /* Purple color for "Steps" */
+        }
+
+        .steps-to-follow h1 .follow {
+            color: #fff; /* White color for "Follow" */
+        }
+
+        .underline {
+            display: block;
+            width: 120px;
+            margin: 10px auto;
+            border-bottom: 2px solid #ddd; /* Light underline */
+        }
+
+        /* Cards Section */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #222;
+            width: 250px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .card.focused {
+            border: 2px solid #6a1b9a;
+            background-color: #333;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #ddd;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            gap: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider .slide {
+            flex: 0 0 20%;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider .slide.active {
+            transform: scale(1.5);
+            z-index: 2;
+            border-color: purple;
+        }
+
+        .slider .slide .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .slider .slide.active .description {
+            display: block;
+        }
+
+        .partners {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .partners h2 {
+            background: linear-gradient(90deg, white, purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        marquee {
+            display: block;
+            color: white;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        footer img {
+            width: 120px;
+            height: auto;
+        }
+
+        footer .social-icons a {
+            margin-right: 10px;
+        }
+
+        footer .social-icons img {
+            width: 24px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="code in the dark logo.png" alt="Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Event</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Sponsor</a></li>
+            </ul>
+            <button class="contact-btn">Contact Us</button>
+        </nav>
+    </header>
+    
+
+    <main class="main">
+        <div class="typewriter">
+            <span id="typewriter"></span>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="image1.jpeg" alt="Slide 1">
+                    <div class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero temporibus hic est molestiae nostrum ducimus quia repellendus nemo aliquid! Maiores recusandae laboriosam eaque culpa quisquam, quos magni praesentium harum labore.</div>
+                </div>
+                <div class="slide">
+                    <img src="image2.jpg" alt="Slide 2">
+                    <div class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut perferendis a nesciunt doloremque molestias officiis iure enim ea, aspernatur corrupti, animi assumenda cupiditate alias officia unde asperiores amet nobis? Eos.</div>
+                </div>
+                <div class="slide">
+                    <img src="image3.jpg" alt="Slide 3">
+                    <div class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, id odio! Voluptatibus consequatur facere dolor, cumque quas similique. Vel nobis corrupti soluta placeat repellendus beatae cupiditate nulla et tenetur quis.</div>
+                </div>
+                <div class="slide">
+                    <img src="image4.jpg" alt="Slide 4">
+                    <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit suscipit fuga praesentium quia adipisci aperiam ex aliquam aliquid alias repudiandae, quibusdam perspiciatis sit exercitationem? Soluta quibusdam laborum rerum illo laboriosam.</div>
+                </div>
+                <div class="slide">
+                    <img src="image5.jpeg" alt="Slide 5">
+                    <div class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam aliquid cum optio sunt accusamus perferendis facilis ratione placeat? Aut qui assumenda, vitae sit repellendus laudantium nihil rem amet iste debitis?</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="partners">
+            <h2>Our Partners</h2>
+            <marquee><img src="paartner3.png" alt=""><img src="paartner5.png" alt=""><img src="paartner6.png" alt=""><img src="partner 2.png" alt=""><img src="partner1.png" alt=""> </marquee>
+        </div>
+    </main>
+    <main class="main">
+        <!-- Typewriter Effect -->
+        <div class="typewriter">
+            <span id="typewriter"></span>
+        </div>
+
+        <!-- Steps To Follow Section -->
+        <div class="steps-to-follow">
+            <h1><span>Steps</span> <span class="follow">To Follow</span></h1>
+            <span class="underline"></span>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="cards">
+            <div class="card">
+                <img src="1.gif" alt="Analyze">
+                <h3>Analyze</h3>
+                <p>Start by analyzing the problem and gathering insights.</p>
+            </div>
+            <div class="card">
+                <img src="2.gif" alt="Brainstorming">
+                <h3>Brainstorming</h3>
+                <p>Generate ideas and possible solutions to tackle the problem.</p>
+            </div>
+            <div class="card">
+                <img src="3.gif" alt="Code">
+                <h3>Code</h3>
+                <p>Write and implement your solution to solve the problem.</p>
+            </div>
+            <div class="card">
+                <img src="4.gif" alt="Evaluate">
+                <h3>Evaluate</h3>
+                <p>Test your solution and evaluate its effectiveness.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Slider -->
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="slide1.jpg" alt="Slide 1">
+                    <div class="description">Description of Slide 1</div>
+                </div>
+                <div class="slide">
+                    <img src="slide2.jpg" alt="Slide 2">
+                    <div class="description">Description of Slide 2</div>
+                </div>
+                <div class="slide">
+                    <img src="slide3.jpg" alt="Slide 3">
+                    <div class="description">Description of Slide 3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partners Section -->
+        <div class="partners">
+            <h2>Our Partners</h2>
+            <marquee>Partner 1 | Partner 2 | Partner 3 | Partner 4 | Partner 5</marquee>
+        </div>
+
+        <!-- Dark Word Section -->
+        <div class="dark-word-section">
+            <div class="dark-word">DARK</div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Logo Section -->
+        <div style="text-align: left; margin-bottom: 20px;">
+            <img src="./logo.png" alt="Logo">
+        </div>
+
+        <!-- Main Content Sections -->
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
+            <!-- Pages Section -->
+            <div style="flex: 1; min-width: 150px; margin-left: 20px; margin-right: 20px; margin-bottom: 20px;">
+                <strong style="font-size: 1.2em;">Pages</strong>
+                <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Events</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">About Us</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Register</a></li>
+                </ul>   
+            </div>
+
+            <!-- Policies Section -->
+            <div style="flex: 1; min-width: 150px; margin-left: 50px; margin-right: 10px; margin-bottom: 20px;">
+                <strong style="font-size: 1.2em;">Policies</strong>
+                <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Terms of Use</a></li>
+                </ul>
+            </div>
+
+            <!-- Code In The Dark Section -->
+            <div style="flex: 1; min-width: 150px; margin-left: 10px; margin-bottom: 20px;">
+                <strong style="font-size: 1.2em;">Code In The Dark</strong>
+                <p style="margin: 10px 0;">123 123 123</p>
+                <p style="margin: 10px 0;">
+                    <a href="mailto:hello@codeinthedark.com" style="color: #fff; text-decoration: none;">
+                        hello@codeinthedark.com
+                    </a>
+                </p>
+
+                <!-- Social Media Icons -->
+                <div class="social-icons" style="margin-top: 10px;">
+                    <a href="#" style="margin-right: 10px;">
+                        <img src="./linkdin.png" alt="LinkedIn">
+                    </a>
+                    <a href="#" style="margin-right: 10px;">
+                        <img src="insta.png" alt="Instagram">
+                    </a>
+                    <a href="#" style="margin-right: 10px;">
+                        <img src="./x.png" alt="X">
+                    </a>
+                    <a href="#">
+                        <img src="./youtube.png" alt="YouTube">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Word Section -->
+    <div class="dark-word-section">
+        <div class="dark-word">DARK</div>
+    </div>
+
+    <script>
+        // Typewriter Effect
+        const text = "Presented by";
+        const typewriterElement = document.getElementById("typewriter");
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                typewriterElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        setTimeout(typeWriter, 500);
+
+        // Interactive Slider
+        const slides = document.querySelectorAll(".slide");
+
+        slides.forEach((slide, index) => {
+            slide.addEventListener("click", () => {
+                // Remove active class from all slides
+                slides.forEach(s => s.classList.remove("active"));
+
+                // Add active class to the clicked slide
+                slide.classList.add("active");
+
+                // Adjust the slider's position to center the active slide
+                const slider = slide.parentElement;
+                const sliderWidth = slider.clientWidth;
+                const slideWidth = slide.clientWidth;
+                const offset = (sliderWidth / 2) - (slideWidth / 2);
+
+                slider.style.transform = `translateX(-${index * slideWidth - offset}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
